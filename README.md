@@ -53,6 +53,7 @@ PDB|5PCY	CHEBI:24875	37	0.02
 
 Only binding residues that pass a 0.01 cutoff are returned. Metal binding residues are predicted for the following CHEBI codes:
 
+```
 CHEBI:48775   : Cd2+
 CHEBI:29108   : Ca2+
 CHEBI:48828   : Co2+
@@ -82,3 +83,4 @@ CHEBI:177874  : NiFe4S5 cluster
 CHEBI:21143   : Fe8S7 iron-sulfur cluster
 CHEBI:60504   : iron-sulfur-iron cofactor
 CHEBI:25213   : metal cation
+```
