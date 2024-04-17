@@ -1,3 +1,4 @@
+torch==2.0.1
 cmake==3.25.0
 einops==0.7.0
 filelock==3.9.0
@@ -23,6 +24,5 @@ numpy==1.26.4
 # nvidia-nvtx-cu11==11.8.86
 packaging==23.2
 sympy==1.12
-# torch==2.0.1
 triton==2.0.0
 typing_extensions==4.8.0
