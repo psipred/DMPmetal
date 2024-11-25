@@ -40,10 +40,10 @@ python pytorch_dmp2e2e_pred.py -i 5pcy.fasta
 
 ### String output to stdout
  
-By defaul, DMPmetal returns output to stdout. You can capture this to a file with a typical redirection. A typical output might be:
+By default, DMPmetal returns output to stdout. You can capture this to a file with a typical redirection. A typical output might be:
 
 ```
-FASTA HEADER ID, CHEBI CODE, ,PROBABILITY
+FASTA HEADER ID, CHEBI CODE, RESIUDE NUMBER, PROBABILITY
 PDB|5PCY	CHEBI:25213	11	0.01
 PDB|5PCY	CHEBI:23378	37	0.99
 PDB|5PCY	CHEBI:29036	37	0.02
