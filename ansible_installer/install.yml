@@ -1,0 +1,6 @@
+- name: Install DMPmetal
+  hosts: all
+  roles:
+    - dmpmetal
+  vars_files:
+   - ./config_vars.yml

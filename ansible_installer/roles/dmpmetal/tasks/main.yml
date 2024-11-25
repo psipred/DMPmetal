@@ -1,0 +1,39 @@
+  - name: Check dmpmetal is present
+    stat: path={{ app_location }}/DMPmetal
+    register: dmpmetal_exist
+
+  - name : Check out dmpmetal from GIT
+    when: dmpmetal_exist.stat.exists == False
+    git:
+      repo: https://github.com/psipred/DMPmetal.git
+      dest: "{{ app_location }}/DMPmetal"
+      clone: yes
+      force: yes
+
+  - name: Initiate virtualenv
+    when: dmpmetal_exist.stat.exists == False
+    pip: 
+      virtualenv: "{{ app_location }}/dmpmetal_env" 
+      virtualenv_python: python{{ python_version }}
+      requirements: ""
+ 
+  - name: Install requirements
+    # when: dmpmetal_exist.stat.exists == False
+    pip:
+      state: latest
+      virtualenv: "{{ app_location }}/dmpmetal_env"
+      virtualenv_command: /bin/virtualenv
+      virtualenv_python: "{{ app_location }}/dmpmetal_env/bin/python"
+      requirements: "{{ app_location }}/DMPmetal/requirements.txt"
+
+  - name: Download dmpmetal weights
+    when: dmpmetal_exist.stat.exists == False
+    get_url:
+      url: http://bioinfadmin.cs.ucl.ac.uk/downloads/DMPmetal/metalpred.pt.gz
+      dest: "{{ app_location }}/DMPmetal/"
+      timeout: 120
+    register: get_url_result
+
+  - name: unzip dmpmetal weights
+    when: dmpmetal_exist.stat.exists == False
+    shell: /usr/bin/gunzip {{ app_location }}/DMPmetal/metalpred.pt.gz
