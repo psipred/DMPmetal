@@ -7,6 +7,7 @@ DMPmetal is a deep learning-based method for predicting metal binding sites from
 DMPmetal requires pytorch and the flash-attn packages. At the time of writing flash-attn most easily installs with pytorch 2.0.1 and cuda 11.8. Though you should be able to compile it against later versions of both. Python dependencies can be installed with
 
 ```
+pip install -r requirements_torch.txt --index-url https://download.pytorch.org/whl/cu118
 pip install -r requirements.txt
 ```
 
