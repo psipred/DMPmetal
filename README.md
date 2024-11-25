@@ -2,13 +2,43 @@
 
 DMPmetal is a deep learning-based method for predicting metal binding sites from amino acid sequences. This uses a pretrained protein language model (pLM) to embed the target sequences and to provide the features for simple feed-forward classifier. From a user perspective, the input to the model is a single amino acid sequence, and the output probabilities relate to each of the 29 CHEBI metal codes. This model was ranked 1st in the UniProt Metal Binding Site Machine Learning Challenge held in 2022, and was trained on the organizers’ provided NEG_TRAIN and POS_TRAIN_FULL datasets, based on curated UniProt annotations (http://insideuniprot.blogspot.com/2022/02/the-uniprot-metal-binding-site-machine.html).
 
+## Ansible installation
+
+First ensure that ansible is installeded on your system, then clone
+the github repo. 
+
+``` bash
+pip install ansible
+git clone https://github.com/psipred/DMPmetal.git
+cd DMPmetal/ansible_installer
+```
+
+Next edit the the config_vars.yml to reflect where you would like DMPmetal and 
+its underlying data to be installed.
+
+You can now run ansible as per
+
+``` bash
+ansible-playbook -i hosts install.yml
+```
+
+You can edit the hosts file to install s4pred on one or more machines. Ansible 
+installation creates a python virtualenv called dmpmetal_env. You activate this with
+
+``` bash 
+source [app path]/dmpmetal_env/bin/activate
+```
+
+If you're using a virtualenv to install Torch you may find you need to add the paths to virtualenv versions of cudnn/lib/ and nccl/lib/ to your LD_LIBRARY_PATH 
+
+
 ## Installation
 
 DMPmetal requires pytorch and the flash-attn packages. At the time of writing flash-attn most easily installs with pytorch 2.0.1 and cuda 11.8. Though you should be able to compile it against later versions of both. Python dependencies can be installed with
 
 ```
-pip install -r requirements_torch.txt --index-url https://download.pytorch.org/whl/cu118
-pip install -r requirements.txt
+pip install -r requirements/requirements_torch.txt --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements/requirements.txt
 ```
 
 The weights file should be downloaded and unpackaged from:

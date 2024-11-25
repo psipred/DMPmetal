@@ -17,14 +17,14 @@
       virtualenv_python: python{{ python_version }}
       requirements: ""
  
-  - name: Install requirements
+  - name: Install torch
     when: dmpmetal_exist.stat.exists == False
     pip:
       state: latest
       virtualenv: "{{ app_location }}/dmpmetal_env"
       virtualenv_command: /bin/virtualenv
       virtualenv_python: "{{ app_location }}/dmpmetal_env/bin/python"
-      requirements: "{{ app_location }}/DMPmetal/requirements_torch.txt"
+      requirements: "{{ app_location }}/DMPmetal/requirements/requirements_torch.txt"
       extra_args: "--index-url https://download.pytorch.org/whl/cu118"
 
   - name: Install requirements
@@ -34,7 +34,7 @@
       virtualenv: "{{ app_location }}/dmpmetal_env"
       virtualenv_command: /bin/virtualenv
       virtualenv_python: "{{ app_location }}/dmpmetal_env/bin/python"
-      requirements: "{{ app_location }}/DMPmetal/requirements.txt"
+      requirements: "{{ app_location }}/DMPmetal/requirements/requirements.txt"
 
   - name: Download dmpmetal weights
     when: dmpmetal_exist.stat.exists == False
