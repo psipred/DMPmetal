@@ -2,7 +2,7 @@ torch==2.0.1
 cmake==3.25.0
 einops==0.7.0
 filelock==3.9.0
-# flash-attn==2.5.5
+# flash-attn<3
 fsspec==2023.4.0
 Jinja2==3.1.2
 lit==15.0.7
